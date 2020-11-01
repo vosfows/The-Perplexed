@@ -16,7 +16,7 @@ $( document ).ready(function() {
           }
       }
   };
-
+    var music = "";
     const accessToken = getUrlParameter('access_token');
     console.log(`accessToken ${accessToken}`);
     const buttonElement = document.querySelector("#search");
@@ -36,22 +36,20 @@ $( document ).ready(function() {
       },
       success: function(data) {
         $("#music").empty();
-        console.log(' ');
-        console.log(' ');
-        console.log('Got data back');
+//         console.log(' ');
+//         console.log(' ');
+//         console.log('Got data back');
         // Let's console what gets returned for our search
-        console.log(JSON.stringify(data));
+        console.log(data);
         // Example: Extract the id of the song from the data object
         let id = data.tracks.items[0].id;
-        console.log(' ');
-        console.log(`id ${id}`); ////id 1TEL6MlSSVLSdhOSddidlJ
-        // Constructing a iframe to embed a song
-        let src_str = `https://open.spotify.com/embed/track/${id}`;
-        console.log(`src_str ${src_str}`);
-        let iframe = `<iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
-//         let iframe = `<iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
-        let parent_div = $('#music');
-        parent_div.append(iframe);
+        data.tracks.items.forEach(item => {
+            music = `
+
+            <iframe src="https://open.spotify.com/embed/${tracks.items.id} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            `
+            $("#music").append()music
+        });
       }
   });
 }
