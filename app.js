@@ -39,7 +39,7 @@ $( document ).ready(function() {
         console.log(' ');
         // Let's console what gets returned for our search
         console.log(JSON.stringify(data));
-        $.each(data.items. function(index, items{
+        $.each(data.items{
           $("#music").append(item.id);
         });
         // Example: Extract the id of the song from the data object
