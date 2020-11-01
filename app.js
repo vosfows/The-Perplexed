@@ -26,7 +26,7 @@ $( document ).ready(function() {
   event.preventDefault();
   const value = inputValue.value;
   const url = 'https://api.spotify.com/v1/search?q=';
-  const newUrl = url + value +'&type=track';
+  const newUrl = url + value +'&type=track'+ '&limit=10&offset=5';
      
       $.ajax ({
       url: newUrl,
@@ -34,12 +34,6 @@ $( document ).ready(function() {
       headers: {
           'Authorization' : 'Bearer ' + accessToken
       },
-          data: {
-              q: value,
-              type: "playlist",
-              offset: "0",
-              limit: "10",
-          },
       success: function(data) {
         $("#music").empty();
         console.log(' ');
