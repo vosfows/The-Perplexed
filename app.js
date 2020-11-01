@@ -36,13 +36,21 @@ $( document ).ready(function() {
       },
       success: function(data) {
         $("#music").empty();
-        data.items.forEach(item => {
-        music = `
-
-        <iframe src="https://open.spotify.com/embed/track/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        `
-        $("#music).append(music)
-        })
+        console.log(' ');
+        console.log(' ');
+        console.log('Got data back');
+        // Let's console what gets returned for our search
+        console.log(JSON.stringify(data));
+        // Example: Extract the id of the song from the data object
+        let id = data.tracks.items[0].id;
+        console.log(' ');
+        console.log(`id ${id}`); ////id 1TEL6MlSSVLSdhOSddidlJ
+        // Constructing a iframe to embed a song
+        let src_str = `https://open.spotify.com/embed/track/${id}`;
+        console.log(`src_str ${src_str}`);
+        let iframe = `<iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+        let parent_div = $('#content');
+        parent_div.append(iframe);
       }
   });
 }
