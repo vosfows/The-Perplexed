@@ -48,8 +48,9 @@ $( document ).ready(function() {
 
           <iframe src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></frame>
           `
+          
+        })
           $("#music").append(music)
-        });
         // console.log(`id ${id}`); ////id 1TEL6MlSSVLSdhOSddidlJ
         // Constructing a iframe to embed a song
         // let src_str = `https://open.spotify.com/embed/track/${id}`;
