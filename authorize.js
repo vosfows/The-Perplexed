@@ -4,6 +4,6 @@ $( document ).ready(function() {
   // Use the following site to convert your regular url to the encoded version: 
   // https://www.url-encode-decode.com/
   const redirectUri= 'https://vosfows.github.io/spotify';
-  let query = `client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}`;
+  let query = `client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true`;
   window.location = `${authEndpoint}?${query}`;
 });
