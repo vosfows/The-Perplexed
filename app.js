@@ -48,7 +48,7 @@ $( document ).ready(function() {
 
             <iframe src="https://open.spotify.com/embed/${tracks.items.id} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             `
-            $("#music").append()music
+            $("#music").append(music)
         });
       }
   });
