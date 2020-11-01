@@ -52,8 +52,7 @@ const inputElement = document.querySelector("inputValue");
            
             <iframe src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           `
-          let parent_div = $("#music);
-          parent_div.append(iframe)
+          $("#music).append(music)
           });
 //         console.log(`src_str ${src_str}`);
 //         let iframe = `<iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
