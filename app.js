@@ -26,7 +26,7 @@ const inputElement = document.querySelector("inputValue");
   event.preventDefault();
   const value = inputValue.value;
   const url = 'https://api.spotify.com/v1/search?q=';
-  const newUrl = url + value +'&type=track';
+  const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
      
       $.ajax ({
       url: newUrl,
