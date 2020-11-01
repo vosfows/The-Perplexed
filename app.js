@@ -49,7 +49,9 @@ $( document ).ready(function() {
            return
            <iframe src="${music.id}frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>"
          })
-         `;
+         `
+         $("#music").append(music)
+         ;
       }
   });
 }
