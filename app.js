@@ -42,7 +42,7 @@ $( document ).ready(function() {
         // Let's console what gets returned for our search
         console.log(JSON.stringify(data));
         // Example: Extract the id of the song from the data object
-        let id = data.tracks.items.id;
+        let id = data.tracks.items[0].id;
         console.log(' ');
         console.log(`id ${id}`); ////id 1TEL6MlSSVLSdhOSddidlJ
         // Constructing a iframe to embed a song
