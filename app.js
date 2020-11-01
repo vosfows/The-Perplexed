@@ -16,6 +16,7 @@ $( document ).ready(function() {
           }
       }
   };
+
     var music = "";
     const accessToken = getUrlParameter('access_token');
     console.log(`accessToken ${accessToken}`);
@@ -42,14 +43,13 @@ $( document ).ready(function() {
         // Let's console what gets returned for our search
         console.log(data);
         // Example: Extract the id of the song from the data object
-        let id = data.tracks.items[0].id;
-        data.tracks.items.forEach(item => {
-            music = `
-
-            <iframe src="https://open.spotify.com/embed/${tracks.items.id} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-            `
-            $("#music").append(music)
-        });
+//         let id = data.tracks.items[0].id;
+         const tracks=`
+         $(tracks.items.map(music) => {
+           return
+           <iframe src="${music.id}frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>"
+         })
+         `;
       }
   });
 }
