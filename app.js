@@ -48,8 +48,8 @@ $( document ).ready(function() {
         // let id = data.tracks.forEach(item);
         var results = data.tracks;
         $.each(results.items, function(index,item){
-          $.get("item.html",function(data){
-            $("music").append(tplawesome(data, [{"name":item, "id":item.id}]));
+          $.get("<iframe src="https://open.spotify.com/embed/track/{{id}}" frameborder="0" allowtransparency="true" allow="encrypted-media",function(data){
+            $("#music").append(tplawesome(data, [{"name":item, "id":item.id}]));
           });
         });
         
