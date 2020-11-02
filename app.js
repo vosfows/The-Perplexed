@@ -37,7 +37,7 @@ $( document ).ready(function() {
       headers: {
           'Authorization' : 'Bearer ' + accessToken
       },
-      success: function(data) {
+      success: function(response) {
         $("#music").empty();
         //console.log(' ');
         //console.log(' ');
@@ -46,10 +46,10 @@ $( document ).ready(function() {
 //         console.log(data);
         // Example: Extract the id of the song from the data object
         // let id = data.tracks.forEach(item);
-        var results = data.tracks;
+        var results = response.tracks;
         $.each(results.items, function(index,item){
-          $.get("<iframe src="https://open.spotify.com/embed/track/{{id}}" frameborder="0" allowtransparency="true" allow="encrypted-media",function(data){
-            $("#music").append(tplawesome(data, [{"name":item, "id":item.id}]));
+          $.get("item.html",function(data){
+            $("#music").append(tplawesome(data, [{"name":item.album.name, "id":item.id}]));
           });
         });
         
