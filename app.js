@@ -44,20 +44,21 @@ $( document ).ready(function() {
         console.log(data);
         // Example: Extract the id of the song from the data object
         // let id = data.tracks.forEach(item);
-        var id = '';
-        for (var i=0; i<=10; i++) {
-          document.write("<iframe  serc=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>")
-        }
+        var results = data.result;
+        $.each(results.items, function(index,item){
+          console.log(item)
+        });
+        
 
 
         // console.log(' ');
         // console.log(`id ${id}`); ////id 1TEL6MlSSVLSdhOSddidlJ
         // // Constructing a iframe to embed a song
-        let src_str = `https://open.spotify.com/embed/track/${item.id}`;
-        // console.log(`src_str ${src_str}`);
-        // let iframe = `<iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
-        let parent_div = $('#music');
-        parent_div.append(iframe);
+        // let src_str = `https://open.spotify.com/embed/track/${item.id}`;
+        // // console.log(`src_str ${src_str}`);
+        // // let iframe = `<iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+        // let parent_div = $('#music');
+        // parent_div.append(iframe);
 
       }
   });
