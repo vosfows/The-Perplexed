@@ -19,15 +19,16 @@ $( document ).ready(function() {
 
     const accessToken = getUrlParameter('access_token');
     console.log(`accessToken ${accessToken}`);
-const buttonElement = document.querySelector("#search");
-const inputElement = document.querySelector("inputValue");
+    const buttonElement = document.querySelector("#search");
+    const inputElement = document.querySelector("inputValue");
     
  buttonElement.onclick = function(event){
   event.preventDefault();
   const value = inputValue.value;
   const url = 'https://api.spotify.com/v1/search?q=';
-  const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
+  const newUrl = url + value +'&type=track';
      
+
       $.ajax ({
       url: newUrl,
       type: 'GET',
@@ -35,21 +36,29 @@ const inputElement = document.querySelector("inputValue");
           'Authorization' : 'Bearer ' + accessToken
       },
       success: function(data) {
-        console.log(' ');
-        console.log(' ');
-        console.log('Got data back');
+        $("#music").empty();
+        //console.log(' ');
+        //console.log(' ');
+        //console.log('Got data back');
         // Let's console what gets returned for our search
         console.log(data);
         // Example: Extract the id of the song from the data object
-        let id = data.tracks.items[0].id;
-        console.log(' ');
-        console.log(`id ${id}`); ////id 1TEL6MlSSVLSdhOSddidlJ
-        // Constructing a iframe to embed a song
-        let src_str = `https://open.spotify.com/embed/track/${id}`;
-        console.log(`src_str ${src_str}`);
-        let iframe = `<iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+        // let id = data.tracks.forEach(item);
+        var id = '';
+        for (var i=0; i<=10; i++) {
+          document.write("<iframe  serc=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>")
+        }
+
+
+        // console.log(' ');
+        // console.log(`id ${id}`); ////id 1TEL6MlSSVLSdhOSddidlJ
+        // // Constructing a iframe to embed a song
+        let src_str = `https://open.spotify.com/embed/track/${item.id}`;
+        // console.log(`src_str ${src_str}`);
+        // let iframe = `<iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
         let parent_div = $('#music');
         parent_div.append(iframe);
+
       }
   });
 }
