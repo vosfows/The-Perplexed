@@ -1,3 +1,5 @@
+function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
+
 $( document ).ready(function() {
     console.log( 'script.js ready!' );
     console.log('version 6')
@@ -26,7 +28,7 @@ $( document ).ready(function() {
   event.preventDefault();
   const value = inputValue.value;
   const url = 'https://api.spotify.com/v1/search?q=';
-  const newUrl = url + value +'&type=track';
+  const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
      
 
       $.ajax ({
@@ -41,15 +43,16 @@ $( document ).ready(function() {
         //console.log(' ');
         //console.log('Got data back');
         // Let's console what gets returned for our search
-        console.log(data);
+//         console.log(data);
         // Example: Extract the id of the song from the data object
         // let id = data.tracks.forEach(item);
-        var results = data.result;
+        var results = data.tracks;
         $.each(results.items, function(index,item){
-          console.log(item)
+          $.get("item.html",function(data){
+            $("music").append(tplawesome(data, [{"name":item, "id":item.id}]));
+          });
         });
         
-
 
         // console.log(' ');
         // console.log(`id ${id}`); ////id 1TEL6MlSSVLSdhOSddidlJ
