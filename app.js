@@ -39,30 +39,13 @@ $( document ).ready(function() {
       },
       success: function(response) {
         $("#music").empty();
-        //console.log(' ');
-        //console.log(' ');
-        //console.log('Got data back');
-        // Let's console what gets returned for our search
-//         console.log(data);
-        // Example: Extract the id of the song from the data object
-        // let id = data.tracks.forEach(item);
+
         var results = response.tracks;
         $.each(results.items, function(index,item){
           $.get("item.html",function(data){
             $("#music").append(tplawesome(data, [{"name":item.album.name, "id":item.id}]));
           });
         });
-        
-
-        // console.log(' ');
-        // console.log(`id ${id}`); ////id 1TEL6MlSSVLSdhOSddidlJ
-        // // Constructing a iframe to embed a song
-        // let src_str = `https://open.spotify.com/embed/track/${item.id}`;
-        // // console.log(`src_str ${src_str}`);
-        // // let iframe = `<iframe src=${src_str} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
-        // let parent_div = $('#music');
-        // parent_div.append(iframe);
-
       }
   });
 }
