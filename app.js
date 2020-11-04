@@ -1,5 +1,3 @@
-function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
-
 $( document ).ready(function() {
     console.log( 'script.js ready!' );
     console.log('version 6')
@@ -27,7 +25,7 @@ $( document ).ready(function() {
     
  buttonElement.onclick = function(event){
   event.preventDefault();
-  const value = inputValue.value;
+  const value = inputElement.value;
   const url = 'https://api.spotify.com/v1/search?q=';
   const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
      
