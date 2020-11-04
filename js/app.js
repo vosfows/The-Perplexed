@@ -25,7 +25,11 @@ $( document ).ready(function() {
     const inputElement = document.querySelector("inputValue");
     var music = ``
     
-   
+  $("form").keypress(function(e) {
+    if (e.which == 13) {
+        return false;
+    }
+    });
  buttonElement.onclick = function(event){
   event.preventDefault();
   const value = inputValue.value;
