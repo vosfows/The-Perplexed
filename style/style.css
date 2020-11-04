@@ -179,7 +179,7 @@ section#search #search{
   outline: none;
 }
 
-section#search .search-button:hover{
+section#search #search:hover{
   color: white;
   border-color: white;
   background-color: transparent;
