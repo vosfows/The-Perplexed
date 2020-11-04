@@ -130,6 +130,11 @@ section#search .discover-top h1{
   padding-bottom: 30px;
 }
 
+#music{
+  text-align: center;
+  width: 100%;
+}
+
 section#search .discover-top p{
   border: 5px solid black;
   padding: 70px;
