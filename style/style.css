@@ -51,7 +51,7 @@ section#home .navigations a:hover {
 
 
 section#home{
-  background-image: url(images/background.jpg);
+  background-image: url(../images/music-bg.jpg);
   background-size: cover;
   background-position: top center;
   position: relative;
@@ -113,7 +113,7 @@ section#home .cta:hover{
 /* Search Section */
 section#search{
   padding: 120px;
-  background-image: url(images/background1.jpg);
+  background-image: url(../images/background1.jpg);
   background-size: 100%;
   background-position: top center;
   position: relative;
