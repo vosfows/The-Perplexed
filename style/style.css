@@ -181,7 +181,7 @@ section#search input[type="text"] {
     padding-left: 20px;
 }
 
-section#search #search{
+section#search #search-button{
   height: 25px;
   width: 50px;
   border: none;
@@ -189,7 +189,7 @@ section#search #search{
   outline: none;
 }
 
-section#search #search:hover{
+section#search #search-button:hover{
   color: white;
   border-color: white;
   background-color: transparent;
