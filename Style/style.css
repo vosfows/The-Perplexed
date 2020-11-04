@@ -186,7 +186,7 @@ section#search .search-button:hover{
   opacity: .6;
 }
 
-section#search .discover-top .results{
+section#search .discover-top .row{
   /* CSS for Results */
   height: 100vh;
   border: 3px solid black;
