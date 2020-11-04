@@ -25,11 +25,7 @@ $( document ).ready(function() {
     const inputElement = document.querySelector("inputValue");
     var music = ``
     
-    document.body.addEventListener('keydown', function(e) {
-  if (e.keyCode == 13) {
-    formhash(this.form, this.form.password);
-  }
-});
+   
  buttonElement.onclick = function(event){
   event.preventDefault();
   const value = inputValue.value;
