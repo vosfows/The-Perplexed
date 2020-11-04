@@ -175,7 +175,7 @@ section#search #inputValue{
   border: 3px solid black;
   outline: none;
 }
-section#search #search input[type="text"] {
+section#search #search-button input[type="text"] {
     font-size: 30px;
     font-family: 'Montserrat', sans-serif;
     padding-left: 20px;
