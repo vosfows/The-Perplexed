@@ -51,7 +51,7 @@ section#home .navigations a:hover {
 
 
 section#home{
-  background-image: url(music-bg.jpg);
+  background-image: url(images/music-bg.jpg);
   background-size: cover;
   background-position: top center;
   position: relative;
@@ -206,7 +206,7 @@ section#search .discover-top .row{
 
 /* Genre Section */
 section#genre{
-  background-image: url(music-bg2.jpg);
+  background-image: url(images/music-bg2.jpg);
   background-size: cover;
   background-position: top center;
   position: relative;
