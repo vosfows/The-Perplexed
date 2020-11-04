@@ -37,7 +37,7 @@
         <div class="form-box">
           <form>
             <input type="text" id="inputValue" placeholder="Search">
-            <button id="search-button" type="button">
+            <button id="search-button" type="button" onkeydown="if (event.keyCode == 13) { return false;}>
               <img src="https://img.icons8.com/pastel-glyph/64/000000/search--v1.png"/>
             </button>
           </form>
