@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Adriel Gaviola"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="./style/movies.css"/>
+		<title>The Perplexed Movies</title>
+	</head>
+	<body>
+		<!--Home Section-->
+		<h1 class="group-name">The Perplexed Movies</h1>
+		<section id="home">
+	    	<div class="navigations">
+				<a href="index.html">HOME</a>
+				<a href="index.html#about-us">ABOUT US</a>
+		    </div>
+	  	</section>
+
+	  	<!--Movies Containter-->
+		<div class = "container">
+			<form>
+				<div class="search-bar">
+					<input type="text" id="search-value">
+					<button type="submit" id="search"></button>
+				</div>
+				<div class="filter-buttons">
+					<button type="submit" id="top-rated-movies">Top Rated</button>
+					<button type="submit" id="popular-movies">Popular</button>
+					<button type="submit" id="upcoming-movies">Upcoming</button>
+					<button type="submit" id="latest-movies">Latest</button>			
+				</div>
+			</form>
+		</div>
+		<div id="searched-movies">
+		</div>
+
+		<!--Initialize scripts here-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="./js/main.js"></script>
+		<script>introductoryDisplay();</script>
+	</body>
+</html>
