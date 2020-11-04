@@ -23,6 +23,7 @@ $( document ).ready(function() {
     console.log(`accessToken ${accessToken}`);
     const buttonElement = document.querySelector("#search");
     const inputElement = document.querySelector("inputValue");
+    var music = ``
     
  buttonElement.onclick = function(event){
   event.preventDefault();
@@ -41,11 +42,17 @@ $( document ).ready(function() {
         $("#music").empty();
 
         var results = response.tracks;
-        $.each(results.items, function(index,item){
-          $.get("item.html",function(data){
-            $("#music").append(tplawesome(data, [{"name":item.album.name, "id":item.id}]));
-          });
-        });
+        results.items.forEach(item => {
+          music = `
+
+          <iframe class="music" width="300" height="420" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          `
+
+          let parent_div = $("#music")
+          parent_div.append(music)
+        })
+
+
       }
   });
 }
