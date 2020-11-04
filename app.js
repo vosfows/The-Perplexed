@@ -25,11 +25,12 @@ $( document ).ready(function() {
     const inputElement = document.querySelector("inputValue");
     var music = ``
     
-     document.body.addEventListener('keydown', function(e) {
-    if (e.keyCode == 13) {
-      getMusic();
-    }
-  });
+     $("input#inputValue").live("keyup", function(e)
+        if(e.which == 13) {
+           getMusic();
+        }
+     });
+
 
   buttonElement.onclick = function(event){
     event.preventDefault();
