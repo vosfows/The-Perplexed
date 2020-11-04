@@ -51,7 +51,7 @@ section#home .navigations a:hover {
 
 
 section#home{
-  background-image: url(../images/music-bg.jpg);
+  background-image: url(background.jpg);
   background-size: cover;
   background-position: top center;
   position: relative;
@@ -113,8 +113,13 @@ section#home .cta:hover{
 /* Search Section */
 section#search{
   padding: 120px;
-
-
+  background-image: url(background1.jpg);
+  background-size: 100%;
+  background-position: top center;
+  position: relative;
+  z-index: 1;
+  border: 5px solid white;
+  color: white;
 }
 
 section#search .discover-top{
@@ -130,8 +135,6 @@ section#search .discover-top h1{
   padding-bottom: 30px;
 }
 
-
-
 #music{
   text-align: center;
   width: 100%;
@@ -141,7 +144,7 @@ section#search .discover-top h1{
 }
 
 section#search .discover-top p{
-  border: 5px solid black;
+  border: 5px solid white;
   padding: 70px;
   line-height: 200%;
   text-align: justify;
@@ -153,7 +156,7 @@ section#search .discover-top h3{
   display: block;
   font-size: 50px;
   position: relative;
-  color: black;
+  color: white;
   letter-spacing: 15px;
   padding-top: 80px;
   display: flex;
@@ -176,23 +179,26 @@ section#search #inputValue{
   outline: none;
 }
 section#search input[type="text"] {
-    font-size: 30px;
-    font-family: 'Montserrat', sans-serif;
-    padding-left: 20px;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  padding-left: 20px;
 }
 
 section#search #search-button{
-  height: 25px;
-  width: 50px;
-  border: none;
-  background: none;
+  height: 80px;
+  width: 80px;
+  padding-left: 100px;
+  border: 3px solid white;
+  border-radius: 25%;
+  background: grey;
   outline: none;
 }
 
+
 section#search #search-button:hover{
-  color: white;
+  color: grey;
   border-color: white;
-  background-color: transparent;
+  background-color: grey;
   opacity: .6;
 }
 
@@ -201,88 +207,4 @@ section#search .discover-top .row{
   height: 100vh;
   border: 3px solid black;
   overflow-y:auto;
-}
-
-
-/* Genre Section */
-section#genre{
-  background-image: url(../images/music-bg2.jpg);
-  background-size: cover;
-  background-position: top center;
-  position: relative;
-  z-index: 1;
-}
-
-section#genre .container{
-display: flex;
-flex-direction: column;
-
-}
-section#genre h3{
-  text-align: center;
-  display: block;
-  font-size: 60px;
-  position: relative;
-  color: white;
-  letter-spacing: 15px;
-  padding-top: 80px;
-  padding-bottom: 80px;
-
-}
-
-section#genre p{
-  border: 5px solid white;
-  padding: 70px;
-  line-height: 200%;
-  text-align: center;
-  color: white;
-  margin: auto;
-  width: 60%;
-  font-size: 50px;
-
-
-}
-
-section#genre .top{
-  width: 90%;
-  display: flex;
-  margin-left: 25px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-}
-
-section#genre .label h3{
-  margin: 0 12px;
-  transition: 1s;
-  font-size: 23px;
-}
-
-section#genre .imggrid{
-  width: 90%;
-  display: flex;
-  margin-left: 25px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-section#genre .imgbox{
-  padding: 20px;
-  margin: 0 33px;
-  border: 3px solid white;
-  border-radius: 115px;
-  transition: 1s;
-}
-
-section#genre .imgbox img{
-  border-radius: 115px;
-  width: 100%;
-  display: block;
-}
-
-section#genre .imgbox:hover{
-transform: scale(1.1);
-z-index: 2;
 }
