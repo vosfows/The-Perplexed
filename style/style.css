@@ -129,10 +129,8 @@ section#search .discover-top h1{
   letter-spacing: 10px;
   padding-bottom: 30px;
 }
-.col-sm-3 col-md-6{
-  overflow-x: hidden; 
-  overflow-y: auto; 
-}
+
+
 
 #music{
   text-align: center;
@@ -202,6 +200,7 @@ section#search .discover-top .row{
   /* CSS for Results */
   height: 100vh;
   border: 3px solid black;
+  overflow-y:auto;
 }
 
 
