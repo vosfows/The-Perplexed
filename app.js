@@ -1,3 +1,5 @@
+function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
+
 $( document ).ready(function() {
     console.log( 'script.js ready!' );
     console.log('version 6')
@@ -20,16 +22,25 @@ $( document ).ready(function() {
     const accessToken = getUrlParameter('access_token');
     console.log(`accessToken ${accessToken}`);
     const buttonElement = document.querySelector("#search-button");
-    const inputElement = document.querySelector("#inputValue");
+    const inputElement = document.querySelector("inputValue");
     var music = ``
     
- buttonElement.onclick = function(event){
-  event.preventDefault();
-  const value = inputElement.value;
-  const url = 'https://api.spotify.com/v1/search?q=';
-  const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
-     
+     document.body.addEventListener('keydown', function(e) {
+    if (e.keyCode == 13) {
+      getMusic();
+    }
+  });
 
+  buttonElement.onclick = function(event){
+    event.preventDefault();
+    getMusic();
+  } 
+
+  function getMusic(){
+
+    var value = inputElement.value;
+    var url = 'https://api.spotify.com/v1/search?q=';
+    var newUrl = url + value +'&type=track' + '&limit=10&offset=5';
       $.ajax ({
       url: newUrl,
       type: 'GET',
@@ -51,7 +62,10 @@ $( document ).ready(function() {
         })
 
 
-      }
-  });
-}
+        } 
+    });
+  }
+
+  
 });
+
