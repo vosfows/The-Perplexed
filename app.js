@@ -45,7 +45,7 @@ $( document ).ready(function() {
         results.items.forEach(item => {
           music = `
 
-          <iframe class="music" width="300" height="420" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <iframe class="music" width="300" height="350" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           `
 
           let parent_div = $("#music")
