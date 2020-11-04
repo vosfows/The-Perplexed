@@ -21,7 +21,7 @@ $( document ).ready(function() {
 
     const accessToken = getUrlParameter('access_token');
     console.log(`accessToken ${accessToken}`);
-    const buttonElement = document.querySelector("#search");
+    const buttonElement = document.querySelector("#search-button");
     const inputElement = document.querySelector("inputValue");
     var music = ``
     
