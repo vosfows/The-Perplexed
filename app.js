@@ -25,23 +25,18 @@ $( document ).ready(function() {
     const inputElement = document.querySelector("inputValue");
     var music = ``
     
-     $("input#inputValue").live("keyup", function(e)
-        if(e.which == 13) {
-           getMusic();
-        }
-     });
+    document.body.addEventListener('keydown', function(e) {
+  if (e.keyCode == 13) {
+    formhash(this.form, this.form.password);
+  }
+});
+ buttonElement.onclick = function(event){
+  event.preventDefault();
+  const value = inputValue.value;
+  const url = 'https://api.spotify.com/v1/search?q=';
+  const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
+     
 
-
-  buttonElement.onclick = function(event){
-    event.preventDefault();
-    getMusic();
-  } 
-
-  function getMusic(){
-
-    var value = inputElement.value;
-    var url = 'https://api.spotify.com/v1/search?q=';
-    var newUrl = url + value +'&type=track' + '&limit=10&offset=5';
       $.ajax ({
       url: newUrl,
       type: 'GET',
@@ -63,10 +58,7 @@ $( document ).ready(function() {
         })
 
 
-        } 
-    });
-  }
-
-  
+      }
+  });
+}
 });
-
