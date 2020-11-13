@@ -22,15 +22,9 @@ $( document ).ready(function() {
     console.log(`accessToken ${accessToken}`);
     const buttonElement = document.querySelector("#search-button");
     const inputElement = document.querySelector("inputValue");
-    var request = require('request');
     var music = ``
     
-  $("form").keypress(function(e) {
-    if (e.which == 13) {
-        return false;
-    }
-    });
- buttonElement.onclick = function(event){
+  buttonElement.onclick = function(event){
   event.preventDefault();
   const value = inputValue.value;
   const url = 'https://api.spotify.com/v1/search?q=';
