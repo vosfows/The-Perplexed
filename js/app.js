@@ -37,7 +37,7 @@ $( document ).ready(function() {
   const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
      
 
-      $.ajax ({
+      $.get({
       url: newUrl,
       type: 'GET',
       headers: {
