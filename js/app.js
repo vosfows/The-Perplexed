@@ -1,10 +1,4 @@
-function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
-
-$( document ).ready(function() {
-    console.log( 'script.js ready!' );
-    console.log('version 6')
-
-    const getUrlParameter = (sParam) => {
+const getUrlParameter = (sParam) => {
       let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
           sURLVariables = sPageURL.split('#'),
           sParameterName,
@@ -19,46 +13,35 @@ $( document ).ready(function() {
       }
   };
 
-    const accessToken = getUrlParameter('access_token');
-    console.log(`accessToken ${accessToken}`);
-    const buttonElement = document.querySelector("#search-button");
-    const inputElement = document.querySelector("inputValue");
-    var music = ``
-    
-  $("form").keypress(function(e) {
-    if (e.which == 13) {
-        return false;
-    }
-    });
- buttonElement.onclick = function(event){
+  
+
+  const accessToken = getUrlParameter('access_token');
+  const buttonElement = document.querySelector('#search-button');
+  const inputElement = document.querySelector('#inputValue');
+
+
+
+
+  buttonElement = function(event) {
   event.preventDefault();
-  const value = inputValue.value;
+  const value = inputElement.value;
   const url = 'https://api.spotify.com/v1/search?q=';
   const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
-     
 
-      $.get({
-      url: newUrl,
-      type: 'GET',
-      headers: {
-          'Authorization' : 'Bearer ' + accessToken
-      },
-      success: function(response) {
-        $("#music").empty();
+  var myOptions = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer' + accessToken
+    }
+  };
+  
 
-        var results = response.tracks;
-        results.items.forEach(item => {
-          music = `
-
-          <iframe class="music" width="300" height="350" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-          `
-
-          let parent_div = $("#music")
-          parent_div.append(music)
-        })
-
-
-      }
+  fetch(url,myOptions)
+  .then((res) => res.json())
+  .then((data) => {
+  console.log('Data', data);
+  })
+  .catch((error) => {
+  console.log('Error', error);
   });
-}
-});
+  }
