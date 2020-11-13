@@ -1,9 +1,7 @@
-function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
-
 $( document ).ready(function() {
     console.log( 'script.js ready!' );
     console.log('version 6')
-    var request = require('request');
+    
 
     const getUrlParameter = (sParam) => {
       let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
@@ -24,6 +22,7 @@ $( document ).ready(function() {
     console.log(`accessToken ${accessToken}`);
     const buttonElement = document.querySelector("#search-button");
     const inputElement = document.querySelector("inputValue");
+    var request = require('request');
     var music = ``
     
   $("form").keypress(function(e) {
@@ -37,12 +36,17 @@ $( document ).ready(function() {
   const url = 'https://api.spotify.com/v1/search?q=';
   const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
 
-  request({url:newUrl, headers:{"Authorization":"Bearer" + accessToken}},
-  function(results){
-  	$("#music").empty();
+  $.get({
+  	url:newUrl,
+  	type:"GET",
+  	headers:{
+  		"Authorization":"Bearer" + accessToken
+  	},
+  	 success: function(response) {
+       $("#music").empty();
 
-        var results = response.tracks;
-        results.items.forEach(item => {
+       var results = response.tracks;
+       results.items.forEach(item => {
           music = `
 
           <iframe class="music" width="300" height="350" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -51,6 +55,10 @@ $( document ).ready(function() {
           let parent_div = $("#music")
           parent_div.append(music)
         })
+
+
+      }
   })
+
 }
 });
