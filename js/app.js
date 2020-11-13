@@ -3,6 +3,7 @@ function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{
 $( document ).ready(function() {
     console.log( 'script.js ready!' );
     console.log('version 6')
+    var request = require('request');
 
     const getUrlParameter = (sParam) => {
       let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
@@ -35,16 +36,10 @@ $( document ).ready(function() {
   const value = inputValue.value;
   const url = 'https://api.spotify.com/v1/search?q=';
   const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
-     
 
-      $.ajax ({
-      url: newUrl,
-      type: 'GET',
-      headers: {
-          'Authorization' : 'Bearer ' + accessToken
-      },
-      success: function(response) {
-        $("#music").empty();
+  request({url:newUrl, headers:{"Authorization":"Bearer" + accessToken}},
+  function(results){
+  	$("#music").empty();
 
         var results = response.tracks;
         results.items.forEach(item => {
@@ -56,9 +51,6 @@ $( document ).ready(function() {
           let parent_div = $("#music")
           parent_div.append(music)
         })
-
-
-      }
-  });
+  })
 }
 });
