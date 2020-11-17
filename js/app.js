@@ -30,15 +30,24 @@ const getUrlParameter = (sParam) => {
   const url = 'https://api.spotify.com/v1/search?q=';
   const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
 
-  fetch(newUrl, headers:{'Authorization':'Bearer' + accessToken})
-  .then((res) => res.json(){
+  var myOptions = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + accessToken
+    },
+    mode: 'cors',
+    cache: 'default'
+  };
+
+  fetch(newUrl,myOptions)
+  .then((res) => res.json())
   .then((data) => {
-  console.log('Data', data);
+  const tracks = data.track.item[0].id;
+  console.log(tracks);
   })
   .catch((error) => {
   console.log('Error', error);
   });
-  })
 
   }
 });
