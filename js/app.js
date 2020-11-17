@@ -20,28 +20,26 @@ const getUrlParameter = (sParam) => {
       }
   };
 
-
   const accessToken = getUrlParameter('access_token');
   const buttonElement = document.querySelector('#search-button');
   const inputElement = document.querySelector('#inputValue');
   const musicRow = document.querySelector('#music');
 
+  function createMusicContainer(music) {
+  const musicElement = document.createElement('div');
+  musicElement.setAttribute('class','test');
 
+  const musicTemplate = `
 
-  function musicSearch(response) {
-  var music = document.getElementById('#music')
-  while(music.firstChild) music.removeChild(music.firstChild)
+  <section class="section">
+  ${ music.map((tracks) => {
+  return `
 
-        var results = response.tracks;
-        results.items.forEach(item => {
-          music = `
-
-          <iframe class="music" width="300" height="350" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-          `
-
-          let parent_div = $("#music")
-          parent_div.append(music)
-        })
+  <iframe class="music" width="300" height="350" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  `;
+  })}
+  </section>
+  `;
   }
 
 
@@ -68,9 +66,6 @@ const getUrlParameter = (sParam) => {
   .then((res) => res.json())
   .then((data) => {
     //data.result
-    const element = data.results;
-    const musicBlock = musicSearch(element);
-    musicRow.appendChild(musicBlock);
     console.log(data);
   })
   .catch((error) => {
