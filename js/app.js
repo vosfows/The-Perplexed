@@ -30,15 +30,7 @@ const getUrlParameter = (sParam) => {
   const url = 'https://api.spotify.com/v1/search?q=';
   const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
 
-  var myOption = {
-  url:newUrl,
-  type: 'GET',
-  headers: {
-  'Authorization' : 'Bearer' + accessToken
-  }
-  }
-
-  fetch(newUrl,myOption)
+  fetch(newUrl, headers:{'Authorization':'Bearer' + accessToken})
   .then((res) => res.json(){
   .then((data) => {
   console.log('Data', data);
