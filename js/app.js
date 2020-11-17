@@ -31,7 +31,7 @@ const getUrlParameter = (sParam) => {
 
   var myOption = {
   url:newUrl,
-  type: 'GET'
+  type: 'GET',
   headers: {
   'Authorization' : 'Bearer' + accessToken
   },
