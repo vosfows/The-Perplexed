@@ -42,8 +42,7 @@ const getUrlParameter = (sParam) => {
   fetch(newUrl,myOptions)
   .then((res) => res.json())
   .then((data) => {
-  const tracks = data.track.item[0].id;
-  console.log(tracks);
+    console.log(data);
   })
   .catch((error) => {
   console.log('Error', error);
