@@ -1,3 +1,9 @@
+var ready = (callback) => {
+  if (document.readyState != "loading") callback();
+  else document.addEventListener("DOMContentLoaded", callback);
+}
+
+ready(() => {
 const getUrlParameter = (sParam) => {
       let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
           sURLVariables = sPageURL.split('#'),
@@ -13,14 +19,9 @@ const getUrlParameter = (sParam) => {
       }
   };
 
-  
-
   const accessToken = getUrlParameter('access_token');
   const buttonElement = document.querySelector('#search-button');
   const inputElement = document.querySelector('#inputValue');
-
-
-
 
   buttonElement.onclick = function(event) {
   event.preventDefault();
@@ -28,20 +29,29 @@ const getUrlParameter = (sParam) => {
   const url = 'https://api.spotify.com/v1/search?q=';
   const newUrl = url + value +'&type=track' + '&limit=10&offset=5';
 
-  var myOptions = {
-    method: 'GET',
-    headers: {
-      'Authorization': 'Bearer' + accessToken
-    }
-  };
-  
+  var myOption = {
+  url:newUrl,
+  type: 'GET'
+  headers: {
+  'Authorization' : 'Bearer' + accessToken
+  },
 
-  fetch(url,myOptions)
-  .then((res) => res.json())
-  .then((data) => {
-  console.log('Data', data);
+  fetch(data)
+  .then(data => {
+  document.querySelector('#music').style.display = 'none';
+
+  var results = data.tracks;
+  results.items.forEach(item => {
+  music = `
+
+   <iframe class="music" width="300" height="350" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+  `
+
+  parent.append('#music');
   })
-  .catch((error) => {
-  console.log('Error', error);
   });
   }
+
+  }
+});
