@@ -1,3 +1,4 @@
+
 var ready = (callback) => {
   if (document.readyState != "loading") callback();
   else document.addEventListener("DOMContentLoaded", callback);
@@ -31,27 +32,21 @@ const getUrlParameter = (sParam) => {
 
   var myOption = {
   url:newUrl,
-  type: 'GET',
+  type: 'GET'
   headers: {
   'Authorization' : 'Bearer' + accessToken
-  },
-
-  fetch(data)
-  .then(data => {
-  document.querySelector('#music').style.display = 'none';
-
-  var results = data.tracks;
-  results.items.forEach(item => {
-  music = `
-
-   <iframe class="music" width="300" height="350" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-
-  `
-
-  parent.append('#music');
-  })
-  });
   }
+  }
+
+  fetch(newUrl,myOption)
+  .then((res) => res.json(){
+  .then((data) => {
+  console.log('Data', data);
+  })
+  .catch((error) => {
+  console.log('Error', error);
+  });
+  })
 
   }
 });
