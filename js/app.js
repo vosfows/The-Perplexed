@@ -65,6 +65,7 @@ const getUrlParameter = (sParam) => {
   fetch(newUrl,myOptions)
   .then((res) => res.json())
   .then((data) => {
+    appendTheMusic(data);
     //data.result
     console.log(data);
   })
@@ -74,3 +75,24 @@ const getUrlParameter = (sParam) => {
 
   }
 });
+
+
+function appendTheMusic(music){
+  var id = ""; 
+  var makeIframe = document.createElement("iframe");
+  makeIframe.setAttribute('width', '300');
+  makeIframe.setAttribute('height', '350');
+  makeIframe.setAttribute('frameborder', '0');
+  makeIframe.setAttribute('transparency', 'true');
+  makeIframe.setAttribute('allow', 'encrypted-media')
+  for (var i = 0;  i >= music.tracks.items.length; i++) {
+    id = music.tracks.items[i][9]
+    
+    makeIframe.setAttribute('src',"https://open.spotify.com/embed/track/"+id);
+    musicRow.addChild(makeIframe);
+  
+  }
+
+
+}
+
