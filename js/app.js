@@ -81,14 +81,15 @@ const getUrlParameter = (sParam) => {
  function appendTheMusic(data){
   var id = ""; 
   var tracks = data.tracks; 
-  var makeIframe = document.createElement("iframe");
-  makeIframe.setAttribute('width', '300');
-  makeIframe.setAttribute('height', '350');
-  makeIframe.setAttribute('frameborder', '0');
-  makeIframe.setAttribute('transparency', 'true');
-  makeIframe.setAttribute('allow', 'encrypted-media')
   document.getElementById("music").innerHTML = null; 
   tracks.items.forEach(item => {
+    
+    var makeIframe = document.createElement("iframe");
+    makeIframe.setAttribute('width', '300');
+    makeIframe.setAttribute('height', '350');
+    makeIframe.setAttribute('frameborder', '0');
+    makeIframe.setAttribute('transparency', 'true');
+    makeIframe.setAttribute('allow', 'encrypted-media');
     makeIframe.setAttribute('src',"https://open.spotify.com/embed/track/"+item.id );
     document.getElementById("music").append(makeIframe);
     console.log(item.id);
