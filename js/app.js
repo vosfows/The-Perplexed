@@ -6,7 +6,7 @@ var ready = (callback) => {
 
 ready(() => {
 const getUrlParameter = (sParam) => {
-      let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
+      let sPageURL = window.location.search.substring(1),
           sURLVariables = sPageURL.split('#'),
           sParameterName,
           i;
@@ -45,7 +45,6 @@ const getUrlParameter = (sParam) => {
   .then((data) => {
     
     appendTheMusic(data);
-    //data.result
     console.log(data);
   })
   .catch((error) => {
