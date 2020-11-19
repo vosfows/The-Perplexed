@@ -25,28 +25,6 @@ const getUrlParameter = (sParam) => {
   const inputElement = document.querySelector('#inputValue');
   const musicRow = document.querySelector('#music');
 
-  function createMusicContainer(music) {
-  const musicElement = document.createElement('div');
-  musicElement.setAttribute('class','test');
-
-  const musicTemplate = `
-
-  <section class="section">
-  ${ music.map((tracks) => {
-  return `
-
-  <iframe class="music" width="300" height="350" src="https://open.spotify.com/embed/track/${item.id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-  `;
-  })}
-  </section>
-  `;
-  }
-
-
-
-
-
-
   buttonElement.onclick = function(event) {
   event.preventDefault();
   const value = inputElement.value;
