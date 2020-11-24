@@ -4,7 +4,7 @@ var ready = (callback) => {
 }
 
 ready(() => {
-const  = 'https://accounts.spotify.com/authorize';
+const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = '779ee1b8200d4c4e900ece34dfaa8254';
 const redirectUri= 'https://vosfows.github.io/spotify/music.html';
 
