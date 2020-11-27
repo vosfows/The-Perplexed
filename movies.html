@@ -15,6 +15,12 @@
 	    	<div class="navigations">
 				<a href="index.html">HOME</a>
 				<a href="index.html#about-us">ABOUT US</a>
+				<div class="filter-buttons">
+					<button type="submit" id="top-rated-movies">Top Rated</button>
+					<button type="submit" id="popular-movies">Popular</button>
+					<button type="submit" id="upcoming-movies">Upcoming</button>
+					<button type="submit" id="latest-movies">Latest</button>			
+				</div>
 		    </div>
 	  	</section>
 
@@ -25,20 +31,13 @@
 					<input type="text" id="search-value">
 					<button type="submit" id="search"></button>
 				</div>
-				<div class="filter-buttons">
-					<button type="submit" id="top-rated-movies">Top Rated</button>
-					<button type="submit" id="popular-movies">Popular</button>
-					<button type="submit" id="upcoming-movies">Upcoming</button>
-					<button type="submit" id="latest-movies">Latest</button>			
-				</div>
+
 			</form>
 		</div>
 		<div id="searched-movies">
 		</div>
 
 		<!--Initialize scripts here-->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="./js/main.js"></script>
-		<script>introductoryDisplay();</script>
 	</body>
 </html>
