@@ -29,7 +29,7 @@ searchButton.onclick = function(event) {
 		.then((data) => {
 			var title;
 			if (data.results.length < 1) {
-				title = "There no movies entitled" + "\"" + value + "\"";
+				title = "There are no movies entitled" + "\"" + value + "\"";
  			}
 			else {
 				title = "Movies with title "+ "\"" + value + "\"";
