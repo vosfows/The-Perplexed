@@ -10,4 +10,4 @@ const redirectUri= 'https://vosfows.github.io/The-Perplexed/music.html';
 
 let query = 'client_id=' + clientId + '&redirect_uri=' + redirectUri + '&response_type=token&show_dialogue=true';
 window.location = authEndpoint + '?' + query;
-})
+});
