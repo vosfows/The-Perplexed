@@ -17,16 +17,26 @@ const popularMovies = document.querySelector('#popular-movies');
 const latestMovies = document.querySelector('#latest-movies');
 const upcomingMovies = document.querySelector('#upcoming-movies');
 
-
 //An event that handle the movie/s searched
 searchButton.onclick = function(event) {
+	searchedMovie.innerHTML = '';
 	event.preventDefault();
 	const value = inputElement.value;
 	const newUrl = url + '&query=' + value;
 
 	fetch(newUrl)
 		.then((res) => res.json())
-		.then(renderSearchedMovie)
+		.then((data) => {
+			var title;
+			if (data.results.length < 1) {
+				title = "There no movies entitled" + "\"" + value + "\"";
+ 			}
+			else {
+				title = "Movies with title "+ "\"" + value + "\"";
+ 			}
+
+			renderSearchedMovie(data, title);
+		})
 		.catch((error) => {
 			console.log('Error', error);
 		});
@@ -35,11 +45,15 @@ searchButton.onclick = function(event) {
 
 //An event that shows all the upcoming movies
 upcomingMovies.onclick = function(event) {
+	searchedMovie.innerHTML = '';
 	event.preventDefault();
 	const upcomingUrl = 'https://api.themoviedb.org/3/movie/upcoming?api_key=' + api_key;
 	fetch(upcomingUrl)
 		.then((res) => res.json())
-		.then(renderSearchedMovie)
+		.then((data) => {
+			const title = "Upcoming Movies";
+			renderSearchedMovie(data, title);
+		})	
 		.catch((error) => {
 			console.log('Error', error);
 	});
@@ -47,11 +61,15 @@ upcomingMovies.onclick = function(event) {
 
 //An event that shows all the latest movies
 latestMovies.onclick = function(event) {
+	searchedMovie.innerHTML = '';
 	event.preventDefault();
 	const upcomingUrl = 'https://api.themoviedb.org/3/movie/now_playing?api_key=' + api_key;
 	fetch(upcomingUrl)
 		.then((res) => res.json())
-		.then(renderSearchedMovie)
+		.then((data) => {
+			const title = "Latest Movies";
+			renderSearchedMovie(data, title);
+		})
 		.catch((error) => {
 			console.log('Error', error);
 	});	
@@ -59,11 +77,15 @@ latestMovies.onclick = function(event) {
 
 //An event that shows all the popular movies
 popularMovies.onclick = function(event) {
+	searchedMovie.innerHTML = '';
 	event.preventDefault();
 	const upcomingUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=' + api_key;
 	fetch(upcomingUrl)
 		.then((res) => res.json())
-		.then(renderSearchedMovie)
+		.then((data) => {
+			const title = "Popular Movies";
+			renderSearchedMovie(data, title);
+		})
 		.catch((error) => {
 			console.log('Error', error);
 	});
@@ -71,20 +93,20 @@ popularMovies.onclick = function(event) {
 
 //An event that shows all the top rated movies
 topRatedMovies.onclick = function(event) {
+	searchedMovie.innerHTML = '';
 	event.preventDefault();
 	const upcomingUrl = 'https://api.themoviedb.org/3/movie/top_rated?api_key=' + api_key;
 	fetch(upcomingUrl)
 		.then((res) => res.json())
-		.then(renderSearchedMovie)
+		.then((data) => {
+			const title = "Top Rated Movies";
+			renderSearchedMovie(data, title);
+		})
 		.catch((error) => {
 			console.log('Error', error);
 	});
 }
 
-//Initialize the introductory page containing a list of latest movies
-function introductoryDisplay() {
-	latestMovies.click();
-}
 function getMovieImage(Movie) {	
 	return Movie.map((Movie) => {
 		if (Movie.poster_path) {
@@ -97,11 +119,12 @@ function getMovieImage(Movie) {
 }
 
 //Create the container where the movies will be displayed
-function createMovieContainer(Movie) {
-	const MovieElement = document.createElement('div');
-	MovieElement.setAttribute('class', 'Movie');
+function createMovieContainer(Movie, title) {
+	const movieElement = document.createElement('div');
+	movieElement.setAttribute('class', 'Movie');
 
-	const MovieTemplate = `
+	const movieTemplate = `
+		<h1 class="content-title">${title}</h1>
 		<section class="movie-section">
 			${getMovieImage(Movie)}
 		</section>
@@ -110,15 +133,14 @@ function createMovieContainer(Movie) {
 		</div>
 	`;
 
-	MovieElement.innerHTML = MovieTemplate;
-	return MovieElement;
+	movieElement.innerHTML = movieTemplate;
+	return movieElement;
 }
 
 //Gets the data related to the searched movie
-function renderSearchedMovie(data) {
-	searchedMovie.innerHTML = '';
+function renderSearchedMovie(data, title) {
 	const Movie = data.results;
-	const MovieList = createMovieContainer(Movie);
+	const MovieList = createMovieContainer(Movie, title);
 	searchedMovie.appendChild(MovieList);
 }
 
@@ -131,19 +153,20 @@ function MovieSelected(id) {
 
 //Gets the movie trailer using youtube iframe api
 function getTrailer() {
-	const MovieId = sessionStorage.getItem('movieId');
-	const trailerUrl = "https://api.themoviedb.org/3/movie/" + MovieId + "/videos?api_key=" + api_key;
+	const movieId = sessionStorage.getItem('movieId');
+	const trailerUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?api_key=" + api_key;
 	fetch(trailerUrl)
 		.then((res) => res.json())
 		.then((data) => {
+			var video = document.querySelector(".video")
 			const output =`
 				<iframe class = "trailer" src = "https://www.youtube.com/embed/${data.results[0].key}" allowfullscreen></iframe>
 			`;
-			$(".video").html(output);
+			video.innerHTML = output;
 		})
 		.catch((error) => {
 			console.log('Error ', error);
-		});
+	});
 }
 
 //Toggle the visibility of the trailer
@@ -154,20 +177,26 @@ function toggle() {
 
 //Gets the details of the selected movie
 function getMovie() {
-	const MovieId = sessionStorage.getItem('movieId');
-	const idUrl = "https://api.themoviedb.org/3/movie/" + MovieId + "?api_key=" + api_key;
+	const movieId = sessionStorage.getItem('movieId');
+	const idUrl = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + api_key;
 	fetch(idUrl)
 		.then((res) => res.json())
 		.then((data) => {
 			var x, name = "";
 			var genre = data.genres;
+			var overview = document.querySelector(".overview");
 			for (x in genre) {
-			name += genre[x].name.valueOf() + ", ";
+				if (genre[x].name.valueOf() == genre[genre.length - 1].name.valueOf()) {
+					name += genre[x].name.valueOf();		
+				}
+				else {
+					name += genre[x].name.valueOf() + ", ";	
+				}
 			};
 			const output =`
 				<div class="row">
 					<div class="poster">
-						<img src=${image_url + data.poster_path} data-movie-id=${MovieId}/>
+						<img src=${image_url + data.poster_path} data-movie-id=${movieId}/>
 					</div>
 					<div class="movie-details">
 						<h2>${data.title}</h2>
@@ -186,7 +215,7 @@ function getMovie() {
 					</div>
 				</div>
 			`;
-			$(".overview").html(output);
+			overview.innerHTML = output;
 		})
 		.catch((error) => {
 			console.log('Error', error);
